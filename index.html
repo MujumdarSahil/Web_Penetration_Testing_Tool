@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Application Penetration Testing Tool</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Web Application Penetration Testing Tool</h1>
+        </div>
+        <div class="image-container">
+            <img src="{{ url_for('static', filename='BG-MK1.jpg') }}" alt="Background Image">
+        </div>
+        <div class="form-container">
+            <form action="/scan" method="post">
+                <input type="text" name="target" placeholder="Target URL or IP" required>
+                <button type="submit">Start Scan</button>
+            </form>
+        </div>
+        <div class="results">
+            {% if results %}
+                <h2>Scan Results</h2>
+                <ul>
+                    {% for result in results %}
+                        <li>{{ result }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
